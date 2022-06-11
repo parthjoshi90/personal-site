@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+{% load compress static %}
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>{% block title %}Parth{% endblock %}</title>
+    {% block meta %}
+    <meta name="Description" content="This is my Personal Website and Blog, built using Django Web Framework.">
+    <meta property="og:title" content="Personal Website and Blog." />
+    <meta property="og:description" content="This is my Personal Website and Blog, built using Django Web Framework." />
+    <meta property="og:type" content="website">
+    {% endblock %}
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:image:type" content="image/png">
+    <link rel="icon" type="image/png" href="{% static 'img/favicon.png' %}" />
+    {% compress css %}
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/all.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/main.css' %}" rel="stylesheet">
+    {% endcompress %}
+    {% block stylesheet %}{% endblock %}
+</head>
+
+<body>
+    {% block body %}
+    <div class="wrapper">
+        {% include 'includes/header.html' %}
+        {% comment %}
+        <div class="announcement">
+            <div class="container">
+                <strong>Scheduled Maintenance:</strong>
+                In order to upgrade our servers, the application will be offline for approximately 20 minutes on Oct 17,
+                2015 07:00 UTC.
+            </div>
+        </div>
+        {% endcomment %}
+        {% block fullwidthheader %}
+        <header class="blog-header" style="background-image: url('{% static "img/triangle_pattern_header.png" %}');">
+            {% block fullwidthcontent %}
+            {% endblock %}
+        </header>
+        {% endblock %}
+        <main>
+            <div class="container">
+                <div class="messages-container">
+                    {% include 'includes/messages.html' %}
+                </div>
+                {% block content %}{% endblock %}
+            </div>
+        </main>
+        {% block fullwidthfooter %}{% endblock %}
+        <div class="push"></div>
+    </div>
+    {% include 'includes/footer.html' %}
+    {% endblock body %}
+    {% compress js %}
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    {% endcompress %}
+    {% block javascript %}{% endblock %}
+</body>
+
+</html>
