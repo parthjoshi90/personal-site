@@ -16,6 +16,7 @@
     <link rel="icon" type="image/png" href="{% static 'img/favicon.png' %}" />
     {% compress css %}
     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/fontawesome.min.css' %}" rel="stylesheet">
     <link href="{% static 'css/all.min.css' %}" rel="stylesheet">
     <link href="{% static 'css/main.css' %}" rel="stylesheet">
     {% endcompress %}
@@ -41,7 +42,7 @@
             {% endblock %}
         </header>
         {% endblock %}
-        <main>
+        <main class="mt-5">
             <div class="container">
                 <div class="messages-container">
                     {% include 'includes/messages.html' %}
@@ -56,6 +57,7 @@
     {% endblock body %}
     {% compress js %}
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/all.min.js' %}"></script>
     {% endcompress %}
     {% block javascript %}{% endblock %}
 </body>

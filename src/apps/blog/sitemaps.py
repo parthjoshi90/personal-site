@@ -11,4 +11,4 @@ class BlogSitemap(Sitemap):
         return Post.objects.filter(status=Post.PUBLISHED).order_by("-start_publication")
 
     def lastmod(self, obj):
-        return obj.last_update
+        return obj.updated_at

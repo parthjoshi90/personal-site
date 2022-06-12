@@ -3,7 +3,7 @@ from django.conf import settings
 from django.contrib import admin
 from django.contrib.sitemaps.views import sitemap
 from django.urls import include, path
-from django.views.generic import RedirectView, TemplateView
+from django.views.generic import TemplateView
 from src.apps.blog.sitemaps import BlogSitemap
 from src.apps.core.sitemaps import StaticSitemap
 

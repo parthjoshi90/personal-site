@@ -1,14 +1,17 @@
 {% extends 'base.html' %}
-
+{% load compress static %}
 {% block title %}Post · Paj{% endblock %}
 
+{% block stylesheet %}
+<link href="{% static 'css/notebook.css' %}" rel="stylesheet">
+{% endblock %}
 {% block fullwidthcontent %}
 <div class="container">
     <div class="row">
         <div class="col col-sm-12 col-md-12 col-lg-12">
             <h1>{{ post.title }}</h1>
-            <p class="lead">{{ post.description }}</p>
-            <p class="pt-5">{{post.created_at}}</p>
+            <p class="lead">{{ post.summary }}</p>
+            <p class="pt-5"> <b>Posted at </b> &nbsp;{{ post.start_publication |date:"D d M Y" }}</p>
         </div>
     </div>
 </div>
@@ -16,11 +19,8 @@
 
 {% block content %}
 <div class="row">
-    <div class="col-md-8">
-        {{ post.content|safe }}
-    </div>
-    <div class="col-md-4 col-sm-12">
-        <div class="sidebar border p-3">
+    <div class="col-md-4">
+        <div class="border p-3 w-100">
             <h2 class="mb-3">Categories</h2>
             {% for category in categories %}
             <a class="btn btn-info btn-xs topic mb-2" href="{% url 'blog:category_home' category_slug=category.slug %}">
@@ -29,5 +29,9 @@
             {% endfor %}
         </div>
     </div>
+    <div class="col-md-8">
+        {{ post.content|safe }}
+    </div>
+    
 </div>
 {% endblock content %}
