@@ -1,0 +1,11 @@
+# requirements.txt    
+-r requirements/base.txt
+
+# requirements/base.txt
+Django==3.2
+
+# requirements/production.txt
+-r requirements/base.txt
+
+# requirements/dev.txt
+-r requirements/base.txt
