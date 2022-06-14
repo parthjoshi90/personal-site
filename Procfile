@@ -1,2 +1,2 @@
 release: python manage.py migrate --settings=src.settings.production
-web gunicorn config.wsgi:application 
+web: gunicorn src.wsgi:application --log-file - --log-level debug
