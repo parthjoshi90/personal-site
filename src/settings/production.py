@@ -1,6 +1,7 @@
 # flake8: noqa
 
 from .base import *
+from decouple import Csv, config
 
 # ==============================================================================
 # SECURITY SETTINGS
@@ -27,3 +28,30 @@ CSRF_COOKIE_HTTPONLY = True
 # ==============================================================================
 # THIRD-PARTY APPS
 # ==============================================================================
+
+# ==============================================================================
+# STATIC
+# ==============================================================================
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
+
+# ==============================================================================
+# django-compressor
+# ==============================================================================
+
+# https://django-compressor.readthedocs.io/en/latest/settings/#django.conf.settings.COMPRESS_ENABLED
+COMPRESS_ENABLED = config("COMPRESS_ENABLED", default=True, cast=bool)
+# https://django-compressor.readthedocs.io/en/latest/settings/#django.conf.settings.COMPRESS_STORAGE
+COMPRESS_STORAGE = "compressor.storage.GzipCompressorFileStorage"
+# https://django-compressor.readthedocs.io/en/latest/settings/#django.conf.settings.COMPRESS_URL
+COMPRESS_URL = STATIC_URL  # noqa F405
+# https://django-compressor.readthedocs.io/en/latest/settings/#django.conf.settings.COMPRESS_OFFLINE
+COMPRESS_OFFLINE = True  # Offline compression is required when using Whitenoise
+# https://django-compressor.readthedocs.io/en/latest/settings/#django.conf.settings.COMPRESS_FILTERS
+COMPRESS_FILTERS = {
+    "css": [
+        "compressor.filters.css_default.CssAbsoluteFilter",
+        "compressor.filters.cssmin.rCSSMinFilter",
+    ],
+    "js": ["compressor.filters.jsmin.JSMinFilter"],
+}
