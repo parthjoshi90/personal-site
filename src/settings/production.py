@@ -32,21 +32,4 @@ CSRF_COOKIE_HTTPONLY = True
 # ==============================================================================
 # STATIC
 # ==============================================================================
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
-
-
-# ==============================================================================
-# django-compressor
-# ==============================================================================
-
-COMPRESS_ENABLED = config("COMPRESS_ENABLED", default=True, cast=bool)
-COMPRESS_STORAGE = "compressor.storage.GzipCompressorFileStorage"
-COMPRESS_URL = STATIC_URL  # noqa F405
-COMPRESS_OFFLINE = True  # Offline compression is required when using Whitenoise
-COMPRESS_FILTERS = {
-    "css": [
-        "compressor.filters.css_default.CssAbsoluteFilter",
-        "compressor.filters.cssmin.rCSSMinFilter",
-    ],
-    "js": ["compressor.filters.jsmin.JSMinFilter"],
-}
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"s
