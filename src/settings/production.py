@@ -32,4 +32,4 @@ CSRF_COOKIE_HTTPONLY = True
 # ==============================================================================
 # STATIC
 # ==============================================================================
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"s
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
