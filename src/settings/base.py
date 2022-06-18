@@ -143,7 +143,7 @@ USE_TZ = True
 
 STATIC_URL = "/static/"
 STATIC_ROOT = BASE_DIR.parent.parent / "static"
-STATICFILES_DIRS = [str(BASE_DIR / "static")]
+STATICFILES_DIRS = [str(BASE_DIR.parent.parent / "static")]
 STATICFILES_FINDERS = (
     "django.contrib.staticfiles.finders.FileSystemFinder",
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
@@ -158,13 +158,6 @@ STATICFILES_FINDERS = (
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR.parent.parent / "media/"
 DEFAULT_FILE_STORAGE = "django.core.files.storage.FileSystemStorage"
-
-
-# ==============================================================================
-# THIRD-PARTY APPS
-# ==============================================================================
-
-COMPRESS_ENABLED = config("COMPRESS_ENABLED", default=not DEBUG, cast=bool)
 
 # ==============================================================================
 # FIRST-PARTY APP
